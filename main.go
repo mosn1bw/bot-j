@@ -1675,29 +1675,29 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 							return
-						case "地圖":
-							imageURL = "https://trello-attachments.s3.amazonaws.com/52ff05f27a3c676c046c37f9/585e3fb981c1240b4df88d73/34fba56ed5cbb5d7f0a9d7d2543ff238/C02018kong-koan_8481.JPG"
+						case "3":
+							imageURL = "https://lh3.googleusercontent.com/-HH0XJGbc8rg/XvGESH1WZ5I/AAAAAAAAFro/hQKPpJ5OVM80ZsBNIR7Ou7aoPh4Rz6DAACK8BGAsYHg/s512/2020-06-22.jpg"
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
-									imageURL, "找教會？我們在這裡！", "也能找其他教會",
-									linebot.NewURITemplateAction("Google Map 公館教會","https://goo.gl/maps/h6s5ccdXrL52"),
-									linebot.NewURITemplateAction("最推薦的教會地圖系統","https://church.oursweb.net/lite/"),
-									linebot.NewURITemplateAction("長老會查詢系統","http://www.pct.org.tw/look4church.aspx"),
+									imageURL, "💠ϻఠ_ఠsɛɳ💠вσт💠", "ℓ๐νә",
+									linebot.NewURITemplateAction("Google Map","https://goo.gl/maps/h6s5ccdXrL52"),
+									linebot.NewURITemplateAction("add me","line://ti/p/~M_BW"),
+									linebot.NewURITemplateAction("click","https://lh3.googleusercontent.com/-pOOr24kfmm0/XzzpnO3Br8I/AAAAAAAAIVQ/NOaSZuWwV0QhaBW9h7wWsiCukigu8XOkACK8BGAsYHg/s512/2020-08-19.gif"),
 								),
 								// LineTemplate_other_example,
 								// LineTemplate_other,
 								linebot.NewCarouselColumn(
-									imageURL, "其他功能", "各種這間教會的資訊",
-									linebot.NewMessageTemplateAction("週報", "週報"),
-									linebot.NewMessageTemplateAction("聯絡資訊", "聯絡資訊"),
-									linebot.NewMessageTemplateAction("網站資訊", "網站資訊"),
+									imageURL, "ϻఠ_ఠsɛɳ", "вσт",
+									linebot.NewMessageTemplateAction("ϻఠ_ఠsɛɳ", "вσт"),
+									linebot.NewMessageTemplateAction("『ᖼOᗱᗴℕ』", "ℓ๐νә"),
+									linebot.NewMessageTemplateAction("ϻఠ_ఠsɛɳ", "вσт"),
 								),
 								LineTemplate_CarouselColumn_feedback,
 							)
-							no_temp_msg := "如果你要尋找身邊附近的教會，\n推薦使用這個地圖系統尋找：\nhttps://church.oursweb.net/lite/\n\n如果要找我們教會就在這裡！"
+							no_temp_msg := "ℓ๐νә"
 							obj_message := linebot.NewTemplateMessage(no_temp_msg, LineTemplate_test)
 
-							obj_message_map := linebot.NewLocationMessage("台北公館教會", "11677 台北市汀州路四段 85 巷 2 號", 25.007408,121.537688) //台北市信義區富陽街46號
+							obj_message_map := linebot.NewLocationMessage("ℓ๐νә", "ℓ๐νә", 25.007408,121.537688) //台北市信義區富陽街46號
 							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message, obj_message_map).Do(); err != nil {
 								log.Print(1876)
 								log.Print(err)
@@ -1958,7 +1958,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 得 = 路得記 = Ruth = 路得 = 路得記 = Ru = ru = Rut = rut = 룻기 = ルツ = ルツ記
 撒上 = 撒母耳記上 = 1 Sam = First Samuel = 撒上 = 撒母耳記上 = 1Sa = 1sa = サムエル記上 = サムエル上 = サム上 = 사무엘상
 撒下 = 撒母耳記下 = 2 Sam = Second Samuel = 撒下 = 撒母耳記下 = 2Sa = 2sa = 사무엘하 = サムエル記下 = サムエル下 = サム下
-
 王上 = 列王紀上 = 1 Kin = First Kings = 王上 = 列王上 = 列王紀上 = 列王記上 = 1Ki = 1ki = 열왕기상
 王下 = 列王紀下 = 2 Kin = Second Kings = 王下 = 列王下 = 列王記下 = 列王紀下 = 2Ki = 2ki = 열왕기하
 代上 = 歷代志上 = 1 Chr = First Chronicles = 歷上 = 代上 = 歷代志上 = 歷代上 = 1Ch = 1ch = 歴上 = 歴代上 = 歴代志上 = 역대상
@@ -1969,7 +1968,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 伯 = 約伯記 = Job = job = 伯 = 約伯 = 約伯記 = Книга Иова = Gióp = ヨブ = ヨブ記 = 욥기
 詩 = 詩篇 = Ps = Psalms = 詩 = 詩篇 = ps = 시편 = Thi-thiên = Псалтирь
 箴 = 箴言 = Prov = Proverbs = 箴 = 箴言 = Pr = pr = Притчи Соломона = Châm-ngôn = 잠언
-
 傳 = 傳道書 = Eccl = Ecclesiastes = 傳 = 傳道 = 傳道書 = Ec = ec = Книга Екклезиаста = или Проповедника = Truyền-đạo = 伝道の書 = 伝道 = 伝 = 伝道書 = 전도서
 歌 = 雅歌 = Song = Song of Solomon = 歌 = 雅歌 = So = so = sng = Sng = Песнь песней Соломона = Nhã-ca = 아가
 賽 = 以賽亞書 = Is = Isaiah = 賽 = 以賽 = 以賽亞 = 以賽亞書 = Isa = isa = Книга пророка Исаии = Ê-sai = イザヤ書 = イザヤ = 이사야
@@ -1980,7 +1978,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 何 = 何西阿書 = Hos = Hosea = 何 = 何西 = 何西阿 = 何西阿書 = Ho = ho = Книга пророка Осии = Ô-sê = ホセア書 = ホセア = 호세아
 珥 = 約珥書 = Joel = 珥 = 約珥 = 約珥書 = Joe = joe = Книга пророка Иоиля = Giô-ên = ヨエル書 = ヨエル = 요엘
 摩 = 阿摩司書 = Amos = 摩 = 阿摩司書 = Am = am = Книга пророка Амоса = A-mốt = アモス書 = アモス = 아모스
-
 俄 = 俄巴底亞書 = Obad = Obadiah = 俄 = 俄巴底亞 = 俄巴底亞書 = Ob = ob = 오바댜 = オバデヤ書 = オバデヤ = Áp-đia = Книга пророка Авдия
 拿 = 約拿書 = Jon = Jonah = 拿 = 約拿 = 約拿書 = jon = 요나 = ヨナ書 = ヨナ = Giô-na = Книга пророка Ионы
 彌 = 彌迦書 = Micah = 彌 = 彌迦 = 彌迦書 = Mic = mic = Книга пророка Михея = Mi-chê = ミカ書 = ミカ = 미가
@@ -1991,7 +1988,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 亞 = 撒迦利亞書 = Zech = Zechariah = 亞 = 撒迦利亞 = 撒迦利亞書 = Zec = zec = Книга пророка Захарии = Xa-cha-ri = 스가랴 = ゼカリヤ書 = ゼカリヤ
 瑪 = 瑪拉基書 = Malachi = 瑪 =  = 瑪拉 = 瑪拉基 = 瑪拉基書 = Mal = mal = 말라기 = マラキ書 = マラキ = Ma-la-chi = Книга пророка Малахии
 太 = 馬太福音 = Matt = Matthew = 太 = 馬太 = 馬太福音 = Mt = mt = 마태복음 = マタイによる福音書 = マタイ = マタイによる = Ma-thi-ơ = От Матфея святое благовествование
-
 可 = 馬可福音 = Mark = 可 = 馬可 = 馬可福音 = Mr = mr = マルコによる福音書 = マルコ = マルコによる = 마가복음 = Mác = От Марка святое благовествование
 路 = 路加福音 = Luke = 路 = 路加 = 路加福音 = Lu = lu = От Луки святое благовествование = Lu-ca = ルカによる福音書 = ルカ = ルカによる = 누가복음
 約 = 約翰福音 = John = 約 = 約翰 = 約翰福音 = Joh = joh = От Иоанна святое благовествование = Giăng = ヨハネによる福音書 = ヨハネ = ヨハネによる = 요한복음
@@ -2002,7 +1998,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 加 = 加拉太書 = Gal = Galatians = 加 = 加拉太 = 加拉太書 = Ga = ga = Послание к Галатам = Ga-la-ti = ガラテヤ = ガラテヤ人への手紙 = 갈라디아서
 弗 = 以弗所書 = Ephesians = 弗 = 以弗所 = 以弗所書 = Eph = eph = Послание к Ефесянам = Ê-phê-sô = エペソ人への手紙 = エペソ = エペソ人 = エペソ人の手紙 = 에베소서
 腓 = 腓立比書 = Phil = Philippians = 腓 = 腓立 = 腓立比 = 腓立比書 = Php = php = 빌립보서 = ピリピ = ピリピ人.ピリピ人への手紙 = Послание к Филиппийцам = Phi-líp
-
 西 = 歌羅西書 = Col = col = Colossians = 西 = 歌羅西 = 歌羅 = 歌羅西書 = Послание к Колоссянам = Cô-lô-se = コロサイ人への手紙 = コロサイ = コロ = 골로새서
 帖前 = 帖撒羅尼迦前書 = 1 Thess = First Thessalonians = 帖前 = 帖撒羅尼迦前 = 帖撒羅尼迦前書 = 1Th = 1th = 데살로니가전서 = テサロニケ人への第一の手紙 = テサ一 = テサロニケ一 = 1 Tê-sa-lô-ni-ca = Первое послание к Фессалоникийцам (Солунянам)
 帖後 = 帖撒羅尼迦後書 = 2 Thess = Second Thessalonians = 帖後 = 帖撒羅尼迦後 = 帖撒羅尼迦後書 = 2Th = 2th = 데살로니가후서 = テサロニケ人への第二の手紙 = テサ二 = テサロニケ二 = 2 Tê-sa-lô-ni-ca = Второе послание к Фессалоникийцам (Солунянам)
@@ -2013,7 +2008,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 來 = 希伯來書 = Heb = Hebrews = 來 = 希伯來 = 希伯來書 = heb = Послание к Евреям = Hê-bơ-rơ = ヘブル人への手紙 = ヘブル = 히브리서
 雅 = 雅各書 = James = 雅 = 雅各 = 雅各書 = Jas = jas = Послание Иакова = Gia-cơ = ヤコブの手紙 = ヤコブ = 야고보서
 彼前 = 彼得前書 = 1 Pet = First Peter = 彼前 = 彼得前 = 彼得前書 = 1Pe = 1pe = Первое послание Петра = 1 Phi-e-rơ = ペテロの第一の手紙 = ペテロ一 = 베드로전서
-
 彼後 = 彼得後書 = 2 Pet = Second Peter = 彼後 = 彼得後 = 彼得後書 = 2Pe = 2pe = Второе послание Петра = 2 Phi-e-rơ = ペテロの第二の手紙 = ペテロ = 베드로후서
 約一 = 約翰一書 = 1 John = First John = 約一 = 約翰一書 = 約翰1 = 約翰1書 = 1Jo = 1jo = Первое послание Иоанна = 1 Giăng = ヨハネの第一の手紙 = ヨハネ一 = 요한일서
 約二 = 約翰二書 = 2 John = second John = 約二 = 約翰二書 = 約翰2 = 約翰2書 = 2Jo = Второе послание Иоанна = 2 Giăng = ヨハネの第二の手紙 = ヨハネ二 = 요한2서
@@ -2136,14 +2130,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 							}
 							return
-						case "轉傳":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("歡迎大家介紹 台北公館教會小天使 給更多人使用！\nhttps://line.me/R/ti/p/@bls5027d\n\n你可以將這則文字訊息轉傳給其他對象。"),linebot.NewTextMessage("這是一種資訊整合的便捷應用，效果類似於自動回話小助理。\n\n概念上最基本的應用類似於遊戲 NPC 或 0800 電話總機，會根據指示自動回覆相關基本資訊。\n也可做其他延伸應用，像是聖經查詢 或 留言給意見...等等。\n\n目前除了教會相關資訊外，還可查詢 24 本聖經。\n支援 10 種語言、24 種聖經版本的精準經節查詢機能。\n並支援範圍查詢的寫法。（例如：聖經 創世紀 1:1-10）\n\n詳細說明可輸入「聖經」，有完整的使用說明介紹。")).Do(); err != nil {
+						case "1":
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222222"),linebot.NewTextMessage("33333333333"),linebot.NewTextMessage("444444444"),linebot.NewTextMessage("5555555555")).Do(); err != nil {
 									log.Print(7285)
 									log.Print(err)
 							}
 							return
-						case "已經傳送給老闆":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("已經幫你把意見傳送給老闆囉！\n如需教會對您進行回覆，\n請補上個人聯絡資訊（mail 或其他）再發送一次！謝謝！"),linebot.NewStickerMessage("2", "514")).Do(); err != nil {
+						case "2":
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("11111111111"),linebot.NewStickerMessage("33333333")).Do(); err != nil {
 									log.Print(15391)
 									log.Print(err)
 							}
@@ -2629,64 +2623,43 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									bible_ver_list_string := `以下介紹單獨使用的各版本聖經的觸發關鍵字
 「=」代表同樣功能，會觸發查詢同一本聖經。
 都用於查詢聖經查詢功能的「開頭」，將依照不同開頭查詢不同聖經。
-
 共支援六種主流語言及其他四種語言，總計支援 24 個聖經版本。
-
 【中文聖經系列】
-
 ※ 目前預設「聖經」為中文和合本，觸發字有：聖經 = bible = Bible = ｂｉｂｌｅ = Ｂｉｂｌｅ
-
 中文聖經 = 中文聖經和合本修訂版 = Rcuv = rcuv = ｒｃｕｖ = Ｒｃｕｖ
 中文聖經新譯本 = ncv = Ncv = Ｎｃｖ = ｎｃｖ
 中文聖經譯本修訂版 = tcv = TCV = Ｔｃｖ = ＴＣＶ
 文言文聖經 = 深文理和合本
-
 【台語聖經系列】
-
 台語聖經 = 閩南語聖經 = 台語聖經漢羅 = 全民台語聖經漢羅
 台語聖經全羅 = 全民台語聖經全羅
-
 台語聖經馬雅各漢羅
 台語聖經馬雅各全羅
-
 台語聖經巴克禮漢羅
 台語聖經巴克禮全羅
-
 【客家】※ 只供查詢新約
-
 客家聖經
-
 【英文聖經系列】
-
 ※ 目前預設「英文聖經」為 KJV 版本，觸發字有：
 英文聖經 = 英語聖書 = Kjv = kjv = Ｋｊｖ = ｋｊｖ = Eng bible = ENG Bible = English bible
-
 英文聖經ERV = erv = ERV = Erv = ＥＲＶ = Ｅｒｖ = ｅｒｖ
 英文聖經Darby = darby = DARBY = Ｄａｒｂｙ = ＤＡＲＢＹ = ｄａｒｂｙ
 英文聖經ASV = ASV = Asv = asv = ＡＳＶ = Ａｓｖ = ａｓｖ
 英文聖經WEB = WEB = Web = web = ＷＥＢ = Ｗｅｂ = ｗｅｂ
 英文聖經BBE = BBE = Bbe = bbe = ＢＢＥ = Ｂｂｅ = ｂｂｅ
-
 【其他外語聖經】
-
 日文聖經 = 聖書 = 日本語聖書 = JP bible = JP Bible = Jp bible
 韓文聖經 = KR bible = Korean = korean = Kr Bible = Kr bible
 越南聖經
 俄文聖經
-
 【古譯文】※ 只供查詢舊約
-
 馬索拉聖經 = bhs = Bhs = BHS = ＢＨＳ = Ｂｈｓ = ｂｈｓ
 希臘聖經 = lxx = LXX = Lxx = ＬＸＸ = Ｌｘｘ = ｌｘｘ
-
 【同時查詢多本的功能】
-
 多國聖經：只會列出各語言其中一本聖經，不包含古譯文。
 多版聖經：會列出所有可查詢的所有版本聖經。
-
 多國聖經 = 多語聖經 = 多語言聖經 = 多國語聖經 = 多國語言聖經 = allbible = all bible = All bible = All Bible
 研究聖經 = 總和聖經 = 綜合聖經 = 聖經研究 = 多版聖經 = 多版本聖經 = Allbible
-
 `
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bible_cmd_info_string),linebot.NewTextMessage(bible_ver_list_string),obj_message).Do(); err != nil {
 											log.Print(7387)
