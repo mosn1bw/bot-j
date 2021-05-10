@@ -627,8 +627,8 @@ func bible(text string,user_msgid string,reply_mode string) (string, string, str
 		print_string = "週報"
 	case "聯絡資訊":
 		print_string = "聯絡資訊"
-	case "地圖","住址","單位地圖","麵包店","地址":
-		print_string = "地圖"
+	case "1","4","單位地圖","麵包店","地址":
+		print_string = "1"
 	case "機器人88":
 		print_string = "機器人88"
 	case "網站資訊","官方網站","臉書","FB","ＦＢ","Fb","Ｆｂ","fb","ｆｂ","FACEBOOK","ＦＡＣＥＢＯＯＫ","Facebook","Ｆａｃｅｂｏｏｋ","facebook","ｆａｃｅｂｏｏｋ":
@@ -1675,7 +1675,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 							return
-						case "3":
+						case "s3":
 							imageURL = "https://lh3.googleusercontent.com/-HH0XJGbc8rg/XvGESH1WZ5I/AAAAAAAAFro/hQKPpJ5OVM80ZsBNIR7Ou7aoPh4Rz6DAACK8BGAsYHg/s512/2020-06-22.jpg"
 							LineTemplate_test := linebot.NewCarouselTemplate(
 								linebot.NewCarouselColumn(
@@ -2095,7 +2095,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 							}
 							return
-						case "選單":
+						case "s2":
 						    imageURL = SystemImageURL
 							//template := LineTemplate_firstinfo
 							t_msg := "建議使用最新版本的 LINE APP 以獲得最佳互動介面體驗。\n" +
@@ -2136,7 +2136,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 							}
 							return
-						case "2":
+						case "s2":
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("11111111111"),linebot.NewTextMessage("33333333")).Do(); err != nil {
 									log.Print(15391)
 									log.Print(err)
