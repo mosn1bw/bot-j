@@ -2131,8 +2131,14 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							return
 						case "1":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222222"),linebot.NewTextMessage("2222222222")).Do(); err != nil {
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222")).Do(); err != nil {
 									log.Print(7285)
+									log.Print(err)
+							}
+							return
+						case "s2":
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("已經幫你把意見傳送給老闆囉！\n如需教會對您進行回覆，\n請補上個人聯絡資訊（mail 或其他）再發送一次！謝謝！"),linebot.NewStickerMessage("2", "514")).Do(); err != nil {
+									log.Print(15391)
 									log.Print(err)
 							}
 							return
@@ -2149,12 +2155,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							        	linebot.NewTextMessage("444444444"),
 							        	linebot.NewTextMessage("5555555555")).Do(); err != nil {
 									log.Print(7285)
-									log.Print(err)
-							}
-							return
-						case "s2":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("已經幫你把意見傳送給老闆囉！\n如需教會對您進行回覆，\n請補上個人聯絡資訊（mail 或其他）再發送一次！謝謝！"),linebot.NewStickerMessage("2", "514")).Do(); err != nil {
-									log.Print(15391)
 									log.Print(err)
 							}
 							return
