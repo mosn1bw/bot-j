@@ -22,7 +22,7 @@ import (
     "crypto/md5"
     "encoding/hex"
 
-    "encoding/json"
+    //"encoding/json"
     // "github.com/bitly/go-simplejson"
 
 )
@@ -641,26 +641,6 @@ func bible(text string,user_msgid string,reply_mode string) (string, string, str
 		print_string = "簡介"
 	case "開發者","admin","Admin","ａｄｍｉｎ","意見回饋":
 		print_string = "開發者"
-	case "台語聖經巴克禮全羅":
-		log.Print(reg.ReplaceAllString(text, "$3"))
-		switch reg.ReplaceAllString(text, "$3") {
-			case "Rev","Revelation","啟","啟示","啟示錄","Re","re","ｒｅ","Ｒｅ","rev","Откровение ап. Иоанна Богослова (Апокалипсис)","Khải-huyền","ヨハネの黙示録","黙示録","요한계시록":
-				bible_short_name = "啟"
-				switch chap_string {
-					case "":
-						print_string = "啟示錄"  //不知章節的時候 //用來等觸發 UI 及特別說明文字
-					default:
-						switch sec_string {
-							case "":	//不知節的時候，知章
-								print_string = Bible_print_string("啟","啟示錄", chap_string, "1","bklcl")
-							default:
-								print_string = Bible_print_string("啟","啟示錄", chap_string, sec_string,"bklcl")
-						}
-				}
-			default:
-				print_string = "聖經"
-				//print_string = "你是要找 " +  reg.ReplaceAllString(text, "$3") + " 對嗎？\n對不起，我還沒學呢...\n"
-		}
 	case "聖經","bible","Bible","ｂｉｂｌｅ","Ｂｉｂｌｅ":
 		print_string = text + "？\n抱歉目前找不到"
 		//bible_say := "有喔！有喔！你在找這個對吧！？\n"
