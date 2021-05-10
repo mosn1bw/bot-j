@@ -2137,7 +2137,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 							}
 							return
 						case "2":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("11111111111"),linebot.NewStickerMessage("33333333")).Do(); err != nil {
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("11111111111"),linebot.NewTextMessage("33333333")).Do(); err != nil {
 									log.Print(15391)
 									log.Print(err)
 							}
