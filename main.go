@@ -2049,7 +2049,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									linebot.NewURITemplateAction("羅滋嶸 傳道：0912-145-239", "tel:0912145239"),
 								),
 								linebot.NewCarouselColumn(
-									imageURL, "其他功能", "各種這間教會的資訊",
+									imageURL, "其他功能", "各種這間教會的資訊"),
 									linebot.NewMessageTemplateAction("聚會時間 & 週報", "週報"),
 									linebot.NewMessageTemplateAction("交通資訊", "教會地圖"),
 									linebot.NewMessageTemplateAction("網站資訊", "官方網站"),
@@ -2099,30 +2099,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 						    imageURL = SystemImageURL
 							//template := LineTemplate_firstinfo
 							t_msg := "建議使用最新版本的 LINE APP 以獲得最佳互動介面體驗。\n" +
-									"以下的內容你對我說，就會有相關的效果回應給你。\n" +
-									"\n" +
-									"【教會】\n" +
-									"\n" +
-									"輸入「聚會時間」可查聚會時間。\n" +
-									"輸入「週報」可查最新電子週報以及下週預告。（互動介面有預習經文的功能）\n" +
-									"輸入「教會地圖」可查各種教會。\n" +
-									"輸入「聯絡資訊」可查電話、傳真、E-mail。（互動介面能直接撥打電話）\n" +
-									"輸入「網站資訊」可查到現有的相關網站，包含 YouTube、Facebook...等。\n" +
-									"輸入「圖書查詢」將引導你找到機構圖書。\n" +
-									"\n" +
-									"【推薦我】\n" +
-									"\n" +
-									"輸入「轉傳」會出現「我」的連結，方便轉傳連結讓更多朋友使用。\n" +
-									"\n" +
-									"【聖經】\n" +
-									"\n" +
-									"輸入「聖經」、「bible」或「Bible」\n" +
-									"會有進一步的使用說明教你查詢。\n" +
-									"基本支援六種語言、連續範圍查詢與呈現。\n" +
-									"\n" +
-									"查詢的文字結果也可以直接當作一般訊息按轉傳，\n" +
-									"分享聖經節錄給你的朋友。\n" +
-									"\n" +
 									"如有其他建議，輸入「開發者」可進行聯絡。"
 							obj_message := linebot.NewTemplateMessage(t_msg, LineTemplate_firstinfo)
 							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這是一種資訊整合的便捷應用，效果類似於自動回話小助理。\n\n概念上最基本的應用類似於遊戲 NPC 或 0800 電話總機，會根據指示自動回覆相關基本資訊。\n也可做其他延伸應用，像是聖經查詢 或 留言給意見...等等。\n\n目前除了教會相關資訊外，還可查詢 24 本聖經。\n支援 10 種語言、24 種聖經版本的精準經節查詢機能。\n並支援範圍查詢的寫法。（例如：聖經 創世紀 1:1-10）\n\n詳細說明可輸入「聖經」，有完整的使用說明介紹。") , obj_message).Do(); err != nil {
@@ -2130,33 +2106,194 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 							}
 							return
-						case "s2":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("已經幫你把意見傳送給老闆囉！\n如需教會對您進行回覆，\n請補上個人聯絡資訊（mail 或其他）再發送一次！謝謝！"),linebot.NewStickerMessage("2", "514")).Do(); err != nil {
-									log.Print(15391)
+						case "m5":
+						    imageURL = "https://lh3.googleusercontent.com/-4ackRpXFH_g/XzrsWbtIz0I/AAAAAAAAIRw/SZrQdCPcZw4iyikJfiuZ-Z63kmcz-ucrgCK8BGAsYHg/s512/2020-08-17.png"
+							template := linebot.NewCarouselTemplate(
+								linebot.NewCarouselColumn(
+									imageURL, "網站資訊", "教會網站資訊",
+									linebot.NewURITemplateAction("台北公館教會的 YouTube", "https://m.youtube.com/user/kkcpct"),
+									linebot.NewURITemplateAction("台北公館教會的 Facebook", "https://m.facebook.com/TPEKKC"),
+									linebot.NewURITemplateAction("台北公館教會的 Blog", "https://kkc2016.blogspot.tw"),
+									  linebot.NewURITemplateAction("教會機構資料", "https://www.pct.org.tw/churchdata.aspx?strOrgNo=C02018"),   https://www.kkcpct.org/   RSS https://www.youtube.com/feeds/videos.xml?channel_id=UCQsLuQJupY5RiwMpEpFaswQ
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "其他相關網站", "其他福音網站",
+									   linebot.NewURITemplateAction("佳音電台", "https://www.goodnews.org.tw/gnfm909.php"),
+									LineTemplate_download_app,
+									linebot.NewURITemplateAction("讚美之泉", "https://store.sop.org/product/mp3_mmo_search/"),
+									linebot.NewURITemplateAction("天韻", "https://www.heavenlymelody.com.tw/videos/"),
+								),
+								linebot.NewCarouselColumn(
+									imageURL, "其他功能", "各種這間教會的資訊",
+									linebot.NewMessageTemplateAction("聚會時間 & 週報", "週報"),
+									linebot.NewMessageTemplateAction("交通資訊", "教會地圖"),
+									linebot.NewMessageTemplateAction("聯絡資訊", "聯絡資訊"),
+								),
+								LineTemplate_CarouselColumn_feedback,
+							)
+							t_msg := "台北公館教會的 YouTube：\nhttps://www.youtube.com/user/kkcpct\n\n台北公館教會的 Facebook\nhttps://m.facebook.com/TPEKKC\n\n台北公館教會的 Blog\nhttps://kkc2016.blogspot.tw"
+							obj_message := linebot.NewTemplateMessage(t_msg, template)
+							if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(1630)
 									log.Print(err)
 							}
 							return
-						case "s3":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("歡迎大家介紹 台北公館教會小天使 給更多人使用！\nhttps://line.me/R/ti/p/@bls5027d\n\n你可以將這則文字訊息轉傳給其他對象。"),linebot.NewTextMessage("這是一種資訊整合的便捷應用，效果類似於自動回話小助理。\n\n概念上最基本的應用類似於遊戲 NPC 或 0800 電話總機，會根據指示自動回覆相關基本資訊。\n也可做其他延伸應用，像是聖經查詢 或 留言給意見...等等。\n\n目前除了教會相關資訊外，還可查詢 24 本聖經。\n支援 10 種語言、24 種聖經版本的精準經節查詢機能。\n並支援範圍查詢的寫法。（例如：聖經 創世紀 1:1-10）\n\n詳細說明可輸入「聖經」，有完整的使用說明介紹。")).Do(); err != nil {
-									log.Print(7285)
+						case "s2":
+						    imageURL = SystemImageURL
+							  template := LineTemplate_firstinfo
+							t_msg := "建議使用最新版本的 LINE APP 以獲得最佳互動介面體驗。\n" +
+									"如有其他建議，輸入「開發者」可進行聯絡。"
+							obj_message := linebot.NewTemplateMessage(t_msg, LineTemplate_firstinfo)
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("這是一種資訊整合的便捷應用\n並詳細說明可輸入「聖經」，有完整的使用說明介紹。") , obj_message).Do(); err != nil {
+									log.Print(1639)
 									log.Print(err)
 							}
 							return
 						case "1":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222")).Do(); err != nil {
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222")).Do(); err != nil {
 									log.Print(7285)
 									log.Print(err)
 							}
 							return
 						case "s":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),
-							        	linebot.NewTextMessage("2222222222222"),
-							        	linebot.NewTextMessage("33333333333"),
-							        	linebot.NewTextMessage("444444444"),
-							        	linebot.NewTextMessage("5555555555")).Do(); err != nil {
+							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222222"),linebot.NewTextMessage("33333333333"),linebot.NewTextMessage("444444444"),linebot.NewTextMessage("5555555555")).Do(); err != nil {
 									log.Print(7285)
 									log.Print(err)
 							}
+							return
+						case "m4":
+							if target_item == "群組對話" {
+								log.Print("觸發離開群組，APP 限定")
+								//  post KEY = 離開群組
+								template := linebot.NewConfirmTemplate(
+									"你確定要請我離開嗎QAQ？",
+									 // .NewPostbackTemplateAction(按鈕字面,post,替使用者發言)
+									linebot.NewPostbackTemplateAction("是","按下確定離開群組對話", ""),
+									linebot.NewPostbackTemplateAction("否", "取消離開群組",""),
+								)
+								obj_message := linebot.NewTemplateMessage("你確定要請我離開嗎QAQ？\n這功能只支援 APP 使用。\n請用 APP 端查看下一步。", template)
+								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message).Do(); err != nil {
+									log.Print(1654)
+									log.Print(err)
+								}
+							}
+							return
+						case "m2":
+								   new_list := "【福音書】\n" +
+								   			"\n" +
+								   			"馬太福音\n" +
+								   			"馬可福音\n" +
+								   			"路加福音\n" +
+								   			"約翰福音\n" +
+								   			"猶大書\n" +
+								   			"\n" +
+								   			"【預言書】\n" +
+								   			"\n" +
+								   			"啟示錄"
+								imageURL = Bible_imageURL
+								LineTemplate_old1 := linebot.NewCarouselTemplate(
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "福音書",
+										linebot.NewPostbackTemplateAction("馬太福音", "馬太福音", "聖經 馬太福音 1:1"),
+										linebot.NewPostbackTemplateAction("馬可福音", "馬可福音", "聖經 馬可福音 1:1"),
+										linebot.NewPostbackTemplateAction("路加福音", "路加福音", "聖經 路加福音 1:1"),
+									),
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "福音書(1) + 新約歷史書(1) + 保羅書信",
+										linebot.NewPostbackTemplateAction("約翰福音", "約翰福音", "聖經 約翰福音 1:1"),
+										linebot.NewPostbackTemplateAction("使徒行傳", "使徒行傳", "聖經 使徒行傳 1:1"),
+										linebot.NewPostbackTemplateAction("羅馬書", "羅馬書", "聖經 羅馬書 1:1"),
+									),
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "保羅書信",
+										linebot.NewPostbackTemplateAction("哥林多前書", "哥林多前書", "聖經 哥林多前書 1:1"),
+										linebot.NewPostbackTemplateAction("哥林多後書", "哥林多後書", "聖經 哥林多後書 1:1"),
+										linebot.NewPostbackTemplateAction("加拉太書", "加拉太書", "聖經 加拉太書 1:1"),
+									),
+									LineTemplate_CarouselColumn_feedback,
+								)
+								temp_msg := "【福音書】\n" +
+											"\n" +
+											"馬太福音\n" +
+											"\n" +
+											"【新約歷史書】\n" +
+											"\n" +
+											"使徒行傳"
+								obj_message1 := linebot.NewTemplateMessage(temp_msg, LineTemplate_old1)
+
+								imageURL = Bible_imageURL
+								LineTemplate_old2 := linebot.NewCarouselTemplate(
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "保羅書信",
+										linebot.NewPostbackTemplateAction("以弗所書", "以弗所書", "聖經 以弗所書 1:1"),
+										linebot.NewPostbackTemplateAction("腓立比書", "腓立比書", "聖經 腓立比書 1:1"),
+										linebot.NewPostbackTemplateAction("歌羅西書", "歌羅西書", "聖經 歌羅西書 1:1"),
+									),
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "保羅書信",
+										linebot.NewPostbackTemplateAction("帖撒羅尼迦前書", "帖撒羅尼迦前書", "聖經 帖撒羅尼迦前書 1:1"),
+										linebot.NewPostbackTemplateAction("帖撒羅尼迦後書", "帖撒羅尼迦後書", "聖經 帖撒羅尼迦後書 1:1"),
+										linebot.NewPostbackTemplateAction("提摩太前書", "提摩太前書", "聖經 提摩太前書 1:1"),
+									),
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "保羅書信",
+										linebot.NewPostbackTemplateAction("提摩太後書", "提摩太後書", "聖經 提摩太後書 1:1"),
+										linebot.NewPostbackTemplateAction("提多書", "提多書", "聖經 提多書 1:1"),
+										linebot.NewPostbackTemplateAction("腓利門書", "腓利門書", "聖經 腓利門書 1:1"),
+									),
+								)
+								temp_msg = "【保羅書信】\n" +
+											"\n" +
+											"羅馬書\n" +
+											"哥林多前書\n" +
+											"提多書\n" +
+											"腓利門書"
+								obj_message2 := linebot.NewTemplateMessage(temp_msg, LineTemplate_old2)
+
+								imageURL = Bible_imageURL
+								LineTemplate_old3 := linebot.NewCarouselTemplate(
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "其他書信",
+										linebot.NewPostbackTemplateAction("希伯來書", "希伯來書", "聖經 希伯來書 1:1"),
+										linebot.NewPostbackTemplateAction("雅各書", "雅各書", "聖經 雅各書 1:1"),
+										linebot.NewPostbackTemplateAction("彼得前書", "彼得前書", "聖經 彼得前書 1:1"),
+									),
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "其他書信",
+										linebot.NewPostbackTemplateAction("彼得後書", "彼得後書", "聖經 彼得後書 1:1"),
+										linebot.NewPostbackTemplateAction("約翰一書", "約翰一書", "聖經 約翰一書 1:1"),
+										linebot.NewPostbackTemplateAction("約翰二書", "約翰二書", "聖經 約翰二書 1:1"),
+									),
+									linebot.NewCarouselColumn(
+										imageURL, "新約", "其他書信",
+										linebot.NewPostbackTemplateAction("約翰三書", "約翰三書", "聖經 約翰三書 1:1"),
+										linebot.NewPostbackTemplateAction("猶大書", "猶大書", "聖經 猶大書 1:1"),
+										linebot.NewPostbackTemplateAction("啟示錄", "啟示錄", "聖經 啟示錄 1:1"),
+									),
+									LineTemplate_CarouselColumn_bible_one,
+									LineTemplate_CarouselColumn_bible_list,
+								)
+								temp_msg = "【其他書信】\n" +
+											"\n" +
+											"希伯來書\n" +
+											"雅各書\n" +
+											"彼得前書\n" +
+											"彼得後書\n" +
+											"約翰一書\n" +
+											"約翰二書\n" +
+											"約翰三書\n" +
+											"猶大書\n" +
+											"\n" +
+											"【預言書】\n" +
+											"\n" +
+											"啟示錄"
+								obj_message3 := linebot.NewTemplateMessage(temp_msg, LineTemplate_old3)
+
+								  if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(new_list)).Do(); err != nil {
+								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message1, obj_message2,obj_message3).Do(); err != nil {
+										log.Print(7484)
+										log.Print(err)
+								}
 							return
 						case "機器人88":
 							if target_item == "群組對話" {
