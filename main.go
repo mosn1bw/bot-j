@@ -2155,12 +2155,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 							}
 							return
-						case "s":
-							if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("111111111111"),linebot.NewTextMessage("2222222222222"),linebot.NewTextMessage("33333333333"),linebot.NewTextMessage("444444444"),linebot.NewTextMessage("5555555555")).Do(); err != nil {
-									log.Print(7285)
-									log.Print(err)
-							}
-							return
 						case "m4":
 							if target_item == "群組對話" {
 								log.Print("觸發離開群組，APP 限定")
@@ -2177,123 +2171,6 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									log.Print(err)
 								}
 							}
-							return
-						case "m2":
-								   new_list := "【福音書】\n" +
-								   			"\n" +
-								   			"馬太福音\n" +
-								   			"馬可福音\n" +
-								   			"路加福音\n" +
-								   			"約翰福音\n" +
-								   			"猶大書\n" +
-								   			"\n" +
-								   			"【預言書】\n" +
-								   			"\n" +
-								   			"啟示錄"
-								imageURL = Bible_imageURL
-								LineTemplate_old1 := linebot.NewCarouselTemplate(
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "福音書",
-										linebot.NewPostbackTemplateAction("馬太福音", "馬太福音", "聖經 馬太福音 1:1"),
-										linebot.NewPostbackTemplateAction("馬可福音", "馬可福音", "聖經 馬可福音 1:1"),
-										linebot.NewPostbackTemplateAction("路加福音", "路加福音", "聖經 路加福音 1:1"),
-									),
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "福音書(1) + 新約歷史書(1) + 保羅書信",
-										linebot.NewPostbackTemplateAction("約翰福音", "約翰福音", "聖經 約翰福音 1:1"),
-										linebot.NewPostbackTemplateAction("使徒行傳", "使徒行傳", "聖經 使徒行傳 1:1"),
-										linebot.NewPostbackTemplateAction("羅馬書", "羅馬書", "聖經 羅馬書 1:1"),
-									),
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "保羅書信",
-										linebot.NewPostbackTemplateAction("哥林多前書", "哥林多前書", "聖經 哥林多前書 1:1"),
-										linebot.NewPostbackTemplateAction("哥林多後書", "哥林多後書", "聖經 哥林多後書 1:1"),
-										linebot.NewPostbackTemplateAction("加拉太書", "加拉太書", "聖經 加拉太書 1:1"),
-									),
-									LineTemplate_CarouselColumn_feedback,
-								)
-								temp_msg := "【福音書】\n" +
-											"\n" +
-											"馬太福音\n" +
-											"\n" +
-											"【新約歷史書】\n" +
-											"\n" +
-											"使徒行傳"
-								obj_message1 := linebot.NewTemplateMessage(temp_msg, LineTemplate_old1)
-
-								imageURL = Bible_imageURL
-								LineTemplate_old2 := linebot.NewCarouselTemplate(
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "保羅書信",
-										linebot.NewPostbackTemplateAction("以弗所書", "以弗所書", "聖經 以弗所書 1:1"),
-										linebot.NewPostbackTemplateAction("腓立比書", "腓立比書", "聖經 腓立比書 1:1"),
-										linebot.NewPostbackTemplateAction("歌羅西書", "歌羅西書", "聖經 歌羅西書 1:1"),
-									),
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "保羅書信",
-										linebot.NewPostbackTemplateAction("帖撒羅尼迦前書", "帖撒羅尼迦前書", "聖經 帖撒羅尼迦前書 1:1"),
-										linebot.NewPostbackTemplateAction("帖撒羅尼迦後書", "帖撒羅尼迦後書", "聖經 帖撒羅尼迦後書 1:1"),
-										linebot.NewPostbackTemplateAction("提摩太前書", "提摩太前書", "聖經 提摩太前書 1:1"),
-									),
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "保羅書信",
-										linebot.NewPostbackTemplateAction("提摩太後書", "提摩太後書", "聖經 提摩太後書 1:1"),
-										linebot.NewPostbackTemplateAction("提多書", "提多書", "聖經 提多書 1:1"),
-										linebot.NewPostbackTemplateAction("腓利門書", "腓利門書", "聖經 腓利門書 1:1"),
-									),
-								)
-								temp_msg = "【保羅書信】\n" +
-											"\n" +
-											"羅馬書\n" +
-											"哥林多前書\n" +
-											"提多書\n" +
-											"腓利門書"
-								obj_message2 := linebot.NewTemplateMessage(temp_msg, LineTemplate_old2)
-
-								imageURL = Bible_imageURL
-								LineTemplate_old3 := linebot.NewCarouselTemplate(
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "其他書信",
-										linebot.NewPostbackTemplateAction("希伯來書", "希伯來書", "聖經 希伯來書 1:1"),
-										linebot.NewPostbackTemplateAction("雅各書", "雅各書", "聖經 雅各書 1:1"),
-										linebot.NewPostbackTemplateAction("彼得前書", "彼得前書", "聖經 彼得前書 1:1"),
-									),
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "其他書信",
-										linebot.NewPostbackTemplateAction("彼得後書", "彼得後書", "聖經 彼得後書 1:1"),
-										linebot.NewPostbackTemplateAction("約翰一書", "約翰一書", "聖經 約翰一書 1:1"),
-										linebot.NewPostbackTemplateAction("約翰二書", "約翰二書", "聖經 約翰二書 1:1"),
-									),
-									linebot.NewCarouselColumn(
-										imageURL, "新約", "其他書信",
-										linebot.NewPostbackTemplateAction("約翰三書", "約翰三書", "聖經 約翰三書 1:1"),
-										linebot.NewPostbackTemplateAction("猶大書", "猶大書", "聖經 猶大書 1:1"),
-										linebot.NewPostbackTemplateAction("啟示錄", "啟示錄", "聖經 啟示錄 1:1"),
-									),
-									LineTemplate_CarouselColumn_bible_one,
-									LineTemplate_CarouselColumn_bible_list,
-								)
-								temp_msg = "【其他書信】\n" +
-											"\n" +
-											"希伯來書\n" +
-											"雅各書\n" +
-											"彼得前書\n" +
-											"彼得後書\n" +
-											"約翰一書\n" +
-											"約翰二書\n" +
-											"約翰三書\n" +
-											"猶大書\n" +
-											"\n" +
-											"【預言書】\n" +
-											"\n" +
-											"啟示錄"
-								obj_message3 := linebot.NewTemplateMessage(temp_msg, LineTemplate_old3)
-
-								  if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(new_list)).Do(); err != nil {
-								if _, err = bot.ReplyMessage(event.ReplyToken, obj_message1, obj_message2,obj_message3).Do(); err != nil {
-										log.Print(7484)
-										log.Print(err)
-								}
 							return
 						case "機器人88":
 							if target_item == "群組對話" {
