@@ -2478,8 +2478,24 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 									bible_cmd_info_string := "我可以幫你精準查詢聖經章節！\n\n" +
 											"【使用方法】\n\n一本聖經 + (分隔符) + 某本書 + (分隔符) + 篇 + (分隔符) + 節\n※ 分隔符 = 空白、冒號或分號。\n「節」可以用 1-10 的方式列出範圍經節。\n\n" +
 											"目前可以查詢六種語言跟同時多國語言版本的聖經。\n\n" +
-									bible_ver_list_string := `以下介紹單獨使用的各版本聖經的觸發「=」代表同樣功能，會觸發查詢同一本聖經。
+									bible_ver_list_string := `以下介紹單獨使用的各版本聖經的觸發關鍵字
+「=」代表同樣功能，會觸發查詢同一本聖經。
 都用於查詢聖經查詢功能的「開頭」，將依照不同開頭查詢不同聖經。
+共支援六種主流語言及其他四種語言，總計支援 24 個聖經版本。
+【中文聖經系列】
+※ 目前預設「聖經」為中文和合本，觸發字有：聖經 = bible = Bible = ｂｉｂｌｅ = Ｂｉｂｌｅ
+中文聖經 = 中文聖經和合本修訂版 = Rcuv = rcuv = ｒｃｕｖ = Ｒｃｕｖ
+中文聖經新譯本 = ncv = Ncv = Ｎｃｖ = ｎｃｖ
+中文聖經譯本修訂版 = tcv = TCV = Ｔｃｖ = ＴＣＶ
+文言文聖經 = 深文理和合本
+俄文聖經
+【古譯文】※ 只供查詢舊約
+馬索拉聖經 = bhs = Bhs = BHS = ＢＨＳ = Ｂｈｓ = ｂｈｓ
+希臘聖經 = lxx = LXX = Lxx = ＬＸＸ = Ｌｘｘ = ｌｘｘ
+【同時查詢多本的功能】
+多國聖經：只會列出各語言其中一本聖經，不包含古譯文。
+多版聖經：會列出所有可查詢的所有版本聖經。
+多國聖經 = 多語聖經 = 多語言聖經 = 多國語聖經 = 多國語言聖經 = allbible = all bible = All bible = All Bible
 研究聖經 = 總和聖經 = 綜合聖經 = 聖經研究 = 多版聖經 = 多版本聖經 = Allbible
 `
 									if _, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage(bible_cmd_info_string),linebot.NewTextMessage(bible_ver_list_string),obj_message).Do(); err != nil {
